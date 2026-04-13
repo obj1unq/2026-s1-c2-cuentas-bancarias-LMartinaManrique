@@ -1,9 +1,30 @@
 import casa.*
 
 describe "casa de pepe y julian" {
+test "test gasto cuenta corriente"{
+casa.CuentaBancaria(cuentaCorriente)
+cuentaCorriente.Saldo(300)
+casa.gastar(200)
+assert.equals(100, cuentaCorriente.saldo())
+assert.equals(200,casa.gastosMensuales())
+casa.gastar(400)
+assert.equals(-300, cuentaCorriente.saldo())
+assert.equals(600,casa.gastosMensuales())
+casa.siguienteMes()
+assert.equals(0, casa.gastosMensuales())
+}
 
-  // Descomentar si hiciera falta un metodo para inicializar el ambiente
-  // method initialize() {
-  // }
+test "test extraccion y deposito"{
+    cuentaConGastos.depositar(1000)
+    assert.equals(980, cuentaConGastos.saldo())
+    cuentaConGastos.extraer(580)
+    assert.equals(400, cuentaConGastos.saldo())
+    cuentaConGastos.extraer(500)
+    assert.equals(-100, cuentaConGastos.saldo())
+    cuentaConGastos.depositar(150)
+    assert.equals(30, cuentaConGastos.saldo())
+    cuentaConGastos.depositar(10)
+
+}
 
 }
